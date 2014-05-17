@@ -1,0 +1,35 @@
+body {
+    background-color: #d2e4de;
+}
+
+.menu-navbar {
+    margin: 0;
+}
+.menu-navbar li {
+    display: inline-block; /* Строчно-блочные элементы */
+    background: #a8caab; /* Цвет фона */
+    margin-right: 3px; /* Расстояние между пунктами меню */
+    -webkit-transform: skewX(-30deg); /* Для Safari и Chrome */
+    -moz-transform: skewX(-30deg); /* Для Firefox */
+    -o-transform: skewX(-30deg); /* Для Opera */
+    -ms-transform: skewX(-30deg); /* Для IE */
+    transform: skewX(-30deg); /* CSS3 */
+}
+
+.menu-navbar li a {
+    color: black; /* Цвет ссылок */
+    display: block; /* Блочный элемент */
+    padding: 5px 15px; /* Поля вокруг текста */
+    text-decoration: none; /* Убираем подчёркивание */
+    -webkit-transform: skewX(30deg); /* Для Safari и Chrome */
+    -moz-transform: skewX(30deg); /* Для Firefox */
+    -o-transform: skewX(30deg); /* Для Opera */
+    -ms-transform: skewX(30deg); /* Для IE */
+    transform: skewX(30deg); /* CSS3 */
+}
+.menu-navbar li:hover {
+    background: #333; /* Цвет фона при наведении курсора мыши */
+}
+.menu-navbar li:hover a {
+    color: white;
+}
