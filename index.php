@@ -4,6 +4,9 @@ require_once('core/core.db.php');
 require_once('core/core.kwt.php');
 require_once('core/core.frontend.php');
 require_once('themes/themes.table.php');
+
+print_r($_GET,true);
+
 // init defaults fields and variables
 $main_content_html = '';
 $main_content_css = '';
@@ -23,7 +26,7 @@ $override = array(
 
 // $link = ConnectDB();
 
-$action = $_GET['action'];
+$action = isset($_GET['action']) ? $_GET['action'] : 'list';
 
 switch ($action) {
     case 'list' : {
@@ -32,15 +35,12 @@ switch ($action) {
 
         /* inner html */
         $inner_html = new kwt("{$innerfilename}.html", '<!--{', '}-->');
-        $main_content_html  = $inner_html->get();
 
         /* inner css */
         $inner_css = new kwt("{$innerfilename}.css", '/*', '*/');
-        $main_content_css   = $inner_css->get();
 
         /* inner jq */
         $inner_jq = new kwt("{$innerfilename}.js", '/*', '*/');
-        $main_content_jq    = $inner_jq->get();
         break;
     }
     case 'view' : {
@@ -49,15 +49,12 @@ switch ($action) {
 
         /* inner html */
         $inner_html = new kwt("{$innerfilename}.html", '<!--{', '}-->');
-        $main_content_html  = $inner_html->get();
 
         /* inner css */
         $inner_css = new kwt("{$innerfilename}.css", '/*', '*/');
-        $main_content_css   = $inner_css->get();
 
         /* inner jq */
         $inner_jq = new kwt("{$innerfilename}.js", '/*', '*/');
-        $main_content_jq    = $inner_jq->get();
         break;
     }
     case 'edit' : {
@@ -66,15 +63,26 @@ switch ($action) {
 
         /* inner html */
         $inner_html = new kwt("{$innerfilename}.html", '<!--{', '}-->');
-        $main_content_html  = $inner_html->get();
 
         /* inner css */
         $inner_css = new kwt("{$innerfilename}.css", '/*', '*/');
-        $main_content_css   = $inner_css->get();
 
         /* inner jq */
         $inner_jq = new kwt("{$innerfilename}.js", '/*', '*/');
-        $main_content_jq    = $inner_jq->get();
+        break;
+    }
+    case 'add' : {
+        $innerfilename = $theme_path.'/add/add';
+        /* prepare data */
+
+        /* inner html */
+        $inner_html = new kwt("{$innerfilename}.html", '<!--{', '}-->');
+
+        /* inner css */
+        $inner_css = new kwt("{$innerfilename}.css", '/*', '*/');
+
+        /* inner jq */
+        $inner_jq = new kwt("{$innerfilename}.js", '/*', '*/');
         break;
     }
     case 'tagcloud' : { break; }
@@ -85,23 +93,28 @@ switch ($action) {
 
         /* inner html */
         $inner_html = new kwt("{$innerfilename}.html", '<!--{', '}-->');
-        $main_content_html  = $inner_html->get();
 
         /* inner css */
         $inner_css = new kwt("{$innerfilename}.css", '/*{', '}*/');
-        $main_content_css   = $inner_css->get();
 
         /* inner jq */
         $inner_jq = new kwt("{$innerfilename}.js", '/*{', '}*/');
-        $main_content_jq    = $inner_jq->get();
+
+        break;
+    }
+    case 'task': {
+        /* задания-действия от скриптов */
+        $task = $_GET['task'];
+        $post = print_r($_POST, true);
+
 
         break;
     }
 } // switch action
-
-$override['inner_html'] = $main_content_html;
-$override['inner_css']  = $main_content_css;
-$override['inner_jq']   = $main_content_jq;
+// $override['log'] = $post."<br>".print_r($_GET, true);
+$override['inner_html'] = isset($inner_html) ? $inner_html->get() : '';
+$override['inner_css'] = isset($inner_css) ? $inner_css->get() : '';
+$override['inner_jq'] = isset($inner_jq) ? $inner_jq->get() : '';
 
 $tpl_index->override($override);
 $tpl_index->out();

@@ -1,5 +1,5 @@
 body {
-    background-color: #d2e4de;
+    background-color: #fff8dc;
 }
 
 .menu-navbar {
@@ -7,7 +7,7 @@ body {
 }
 .menu-navbar li {
     display: inline-block; /* Строчно-блочные элементы */
-    background: #a8caab; /* Цвет фона */
+    background: #00bfff; /* Цвет фона */
     margin-right: 3px; /* Расстояние между пунктами меню */
     -webkit-transform: skewX(-30deg); /* Для Safari и Chrome */
     -moz-transform: skewX(-30deg); /* Для Firefox */
@@ -32,4 +32,26 @@ body {
 }
 .menu-navbar li:hover a {
     color: white;
+}
+
+/* Tags area */
+#tags-container {}
+
+#tags-container input {
+    margin: 5px auto 5px 10px;
+    font-size: large;
+    height: 120%;
+}
+
+#tags-container legend {
+    color: blue;
+}
+#tags-container div {
+}
+
+#tags-container button {
+    display: inline;
+    border: 2px solid #dcdcdc;
+    border-radius: 2px;
+    background-color: #e6e6fa;
 }

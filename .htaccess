@@ -1,0 +1,8 @@
+#RewriteEngine on
+#RewriteBase /
+RewriteEngine on
+# RewriteRule ^([a-z0-9]*)?$ index.php?action=$1
+ErrorDocument 404 /error404.html
+RewriteCond %{REQUEST_FILENAME} !^favicon\.ico
+RewriteRule ^(.*)/$ $1
+RewriteRule ^([a-z0-9]*)?(/([a-z0-9]*)?)?$ index.php?action=$1&actor=$3 [L,QSA]

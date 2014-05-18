@@ -1,0 +1,18 @@
+<form action="/task/insert" method="post">
+    Title: <input type="text" name="title" value=""> <br>
+    Alias: <input type="text" name="alias" value=""> <br>
+    <hr>
+    <textarea name="textdata" id="area1"></textarea>
+    <hr>
+    <fieldset id="tags-container">
+        <legend>Available tags</legend>
+        Tags: <input type="text" name="tags" value="" size="100" id="tags-input">
+        <div>
+            <button type="button" class="tag-button" name="tag1">tag1</button>
+            <button type="button" class="tag-button" name="tag2">tag2</button>
+            <button type="button" class="tag-button" name="tag3">tag3</button>
+        </div>
+    </fieldset>
+    <button type="button" id="action-test">Test tags!</button>
+    <input type="submit" value="Save data">
+</form>
